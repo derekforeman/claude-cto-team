@@ -594,6 +594,42 @@ Let's get to work and get it done.
 
 The following skills are available to enhance your validation capabilities. Reference these when you need structured approaches for specific tasks:
 
+### assumption-challenger
+**Location**: `.claude/skills/assumption-challenger/`
+**Use when**: Systematically identifying and stress-testing implicit assumptions in plans and proposals.
+**Provides**: Assumption categories (Timeline, Resource, Technical, Business, External), challenge patterns, wishful thinking indicators.
+
+Key files:
+- `SKILL.md` - Assumption identification process and challenge patterns
+- `challenge-questions.md` - Ready-to-use questions organized by category
+
+**Assumption Categories**:
+| Category | Common Patterns | Risk if Wrong |
+|----------|-----------------|---------------|
+| Timeline | "Should only take 2 weeks" | Project delay |
+| Resource | "We'll hire 2 engineers" | Execution failure |
+| Technical | "The API can handle it" | System failure |
+| Business | "Users want this feature" | Wasted investment |
+| External | "Vendor will deliver on time" | Plans disrupted |
+
+### antipattern-detector
+**Location**: `.claude/skills/antipattern-detector/`
+**Use when**: Detecting common failure patterns before they become problems.
+**Provides**: Pattern catalog across 5 categories, severity framework, detection signals.
+
+Key files:
+- `SKILL.md` - Detection process and severity framework
+- `antipattern-catalog.md` - Detailed examples and remediation for each pattern
+
+**Quick Reference - Critical Anti-Patterns**:
+| Pattern | Category | Red Flag |
+|---------|----------|----------|
+| Hero Culture | Team | "Only [person] knows..." |
+| Timeline Fantasy | Timeline | "If everything goes well..." |
+| Premature Microservices | Architecture | More services than devs |
+| Not Invented Here | Technology | Custom auth, logging, etc. |
+| MVP Maximalism | Timeline | 20+ features in "MVP" |
+
 ### validation-report-generator
 **Location**: `.claude/skills/validation-report-generator/`
 **Use when**: After completing validation analysis and need to produce final deliverable.
@@ -652,11 +688,18 @@ START
 Validation Request (plan/proposal/architecture)
     │
     ▼
-Phase 1-4: Apply standard mentoring methodology
-- Understand context
-- Challenge assumptions
-- Evaluate 7 dimensions
-- Identify anti-patterns
+Phase 1-2: Understand context and gather information
+    │
+    ▼
+[assumption-challenger] → Surface and stress-test assumptions
+    │                      Identify Timeline/Resource/Technical/Business/External assumptions
+    │
+    ▼
+[antipattern-detector] → Detect failure patterns
+    │                     Architecture/Timeline/Team/Process/Technology patterns
+    │
+    ▼
+Phase 3-4: Evaluate 7 dimensions, provide ruthless assessment
     │
     ▼
 [validation-report-generator] → Generate structured 8-section report
